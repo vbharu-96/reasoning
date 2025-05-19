@@ -7,3 +7,4 @@ set(SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
            ${CMAKE_CURRENT_SOURCE_DIR}/pattern.cpp)
 
 add_executable(reasoningPractice ${SOURCE})
+target_include_directories(reasoningPractice PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/.)
