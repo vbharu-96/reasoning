@@ -1,8 +1,10 @@
 #include<iostream>
 #include<string>
 #include<vector>
-#include <pattern.h>
 #include<sstream>
+
+#include <pattern.h>
+
 
 int main() {
   std::string input;
@@ -25,14 +27,20 @@ int main() {
       }
       break;
   }
-  
-  auto res = pattern1(sequence);
-  if(res){
-    std::cout<< "Answer : " <<*res<<std::endl;
-  }
-  else{
-    std::cout<<"I hope you are not kidding...otherwise, I don't know the answer.... :( "<<std::endl;
+  if(sequence.size() < 3) {
+    std::cout<<"ERROR : invalid input..."<<std::endl;
+    return 0;
   }
 
+  using Forarmula = bool(*)(std::vector<int>);
+  std::vector<Forarmula> formulas {addDiff, mulDiff}; 
+  auto resultFound =false;
+  for(auto& formula: formulas) {
+    resultFound = formula(sequence);
+    if(resultFound) break;
+  }
+  if(!resultFound) {
+    std::cout<<"I hope you are not kidding...otherwise, I don't know the answer.... :( "<<std::endl;
+  }
 }
     
